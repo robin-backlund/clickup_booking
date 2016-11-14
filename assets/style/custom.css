@@ -1,0 +1,42 @@
+
+#overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: black;
+	z-index: 1;
+	display: none;
+	opacity: 0.8;
+}
+#ui-datepicker-div {
+	width: 100vw;
+	min-height: 200px;
+	overflow: hidden;
+	left: 0px;
+	position: relative !important;
+	left: 0px;
+	top: 0px;
+	padding: 0px;
+	border: none;
+	border-radius: 5px 5px 0px 0px;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 2;
+}
+.ui-state-default {
+	height: 100px;
+}
+.ui-widget-header {
+	background: #00b3e7 !important;
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid gray;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+	background: #00b3e7 !important;
+	border: none;
+	opacity: 0.8;
+}
+.ui-state-default, .ui-widget-content .ui-state-default {
+	background: #e7e7e7;
+}
