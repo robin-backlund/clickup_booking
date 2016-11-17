@@ -7,9 +7,45 @@
 	<link rel="stylesheet" href="assets/style/custom.css" type="text/css" />
 </head>
 <body>
+
+	<?php
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+
+	// Create connection
+	$conn = new mysqli($servername, $username, $password);
+	// Check connection
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+	}
+	mysqli_select_db($conn, "scheduler");
+
+	?>
+
+
 <div id="overlay"></div>
-<input type="text" id="datepicker">
-<input id="timepicker" type="text" class="time ui-timepicker-input" autocomplete="off">
+<form action="index.php" method="post">
+		<input type="text" id="datepicker" method="post" name="date">
+		<input id="timepicker" type="text" class="time ui-timepicker-input" autocomplete="off" method="post" name="time">
+		<p><input type="submit" /></p>
+
+		<?php
+				$date = htmlspecialchars($_POST['date']);
+				$time = htmlspecialchars($_POST['time']);
+
+				$test = mysqli_query($conn, "INSERT INTO scheduler (date, time) VALUES ('$date', '$time')");
+
+				$testie = mysqli_query($conn, "SELECT date, time FROM scheduler WHERE time = '11:00'");
+				$rowie = mysqli_fetch_row($testie);
+		 ?>
+</form>
+<p>
+	<?php echo $rowie[0]; echo $rowie[1]; ?>
+</p>
+
+
+
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -31,7 +67,7 @@ var array = ["2016-11-15","2016-11-13"];
         	return [ array.indexOf(string) == -1 ]
         	return $.datepicker.noWeekends
     	},
-    	
+
 
     });
   } );
