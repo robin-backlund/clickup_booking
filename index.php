@@ -50,8 +50,7 @@ elements = document.getElementsByTagName("option");
 for (i = 0; i < num_of_dropped_kids; i++){
 	value = elements[i].value;
 	contains_bool = jQuery.inArray(value, arr);
-	console.log(value);
-	console.log(contains_bool);
+
 	if (contains_bool !== -1) {
 		elements[i].setAttribute("style", "background-color: red;");
 		elements[i].setAttribute("disabled", "");
@@ -64,16 +63,13 @@ for (i = 0; i < num_of_dropped_kids; i++){
 				$time = $_POST['time'];
 				$name = htmlspecialchars($_POST['name']);
 
-				$test = mysqli_query($conn, "INSERT INTO scheduler (date, time, name) VALUES ('$date', '$time', '$name')");
-				$one = mysqli_error($conn);
-
-				$testie = mysqli_query($conn, "SELECT date, time, name FROM scheduler WHERE time = '1'");
-				$rowie = mysqli_fetch_row($testie);
+				$submit_form_insert = mysqli_query($conn, "INSERT INTO scheduler (date, time, name) VALUES ('$date', '$time', '$name')");
+				$error = mysqli_error($conn);
 		 ?>
 </form>
 
 <p>
-	<?php echo $one; ?>
+	<?php echo $error; ?>
 </p>
 
 
