@@ -36,7 +36,7 @@
 			<option>6</option value="6">
 		</select>
 		<input type="text" id="datepicker" method="post" name="name">
-		<p><input type="submit" /></p>
+		<p><input type="submit" name="submit_booking"/></p>
 
 <?php
 $taken_times = mysqli_query($conn, "SELECT time FROM scheduler");
@@ -59,15 +59,17 @@ for (i = 0; i < num_of_dropped_kids; i++){
 </script>
 
 		<?php
-				$date = $_POST['date'];
-				$time = $_POST['time'];
-				$name = htmlspecialchars($_POST['name']);
+			if (isset($_POST["submit_booking"])) {
+					$date = $_POST['date'];
+					$time = $_POST['time'];
+					$name = htmlspecialchars($_POST['name']);
+}
 
-				if ($_POST) {
+			if ($_POST) {
 	 				$submit_form_insert = mysqli_query($conn, "INSERT INTO scheduler (date, time, name) VALUES ('$date', '$time', '$name')");
 
    				header("Location: index.php" . $_SERVER['REQUEST_URI']);
-   			exit();
+   		exit();
 }
 
 				$error = mysqli_error($conn);
