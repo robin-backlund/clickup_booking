@@ -63,7 +63,13 @@ for (i = 0; i < num_of_dropped_kids; i++){
 				$time = $_POST['time'];
 				$name = htmlspecialchars($_POST['name']);
 
-				$submit_form_insert = mysqli_query($conn, "INSERT INTO scheduler (date, time, name) VALUES ('$date', '$time', '$name')");
+				if ($_POST) {
+	 				$submit_form_insert = mysqli_query($conn, "INSERT INTO scheduler (date, time, name) VALUES ('$date', '$time', '$name')");
+
+   				header("Location: index.php" . $_SERVER['REQUEST_URI']);
+   			exit();
+}
+
 				$error = mysqli_error($conn);
 		 ?>
 </form>
